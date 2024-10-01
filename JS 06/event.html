@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #paragraf {
+                width: 600px;
+                height: 80px;
+                background-color: pink;
+                line-height: 80px;
+                text-align: center;
+                font-size: 30px;
+            }
+        </style>
+        <script src="jquery-3.3.1.js"></script>
+        <script>
+            $(document).ready(function() { // Changed Function to function (lowercase)
+
+                $("#paragraf").click(function() { // Added '#' to select the element by ID
+                    $("#paragraf").css("color", "white");
+                });
+                $("#paragraf").mouseover(function() { // Changed Function to function
+                    $("#paragraf").css("background-color", "silver"); // Corrected the selector and case sensitivity
+                });
+                $("#paragraf").mouseout(function() { // Changed Function to function
+                    $("#paragraf").css("background-color", "blue"); // Corrected the selector and case sensitivity
+                });
+                $("#paragraf").dblclick(function() { // Changed dbclick to dblclick and Function to function
+                    $("#paragraf").css("border", "solid 3px black"); // Corrected the selector and case sensitivity
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p id="paragraf">praktikum minggu ke-4 JQuery</p>
+    </body>
+</html>

@@ -24,37 +24,26 @@
         <input type="radio" name="jenis_kelamin" value="laki-laki"> Laki-laki<br>
         <input type="radio" name="jenis_kelamin" value="perempuan"> Perempuan<br>
         <br>
-    </form>
-    <input type="submit" value="Submit">
-    <?php
+        <input type="submit" value="submit">
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nama = $_POST["nama"];
-    $email = $_POST["email"];
+        </form>
 
-    $errors = array();
+        <script>
+$(document).ready(function() {
+    $("#myForm").submit(function(e) {
+        e.preventDefault(); 
 
-    
-    if (empty($nama)) {
-        $errors[] = "Nama harus diisi.";
-    }
-
-   
-    if (empty($email)) {
-        $errors[] = "Email harus diisi.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Format email tidak valid.";
-    }
-
-    
-    if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo $error . "<br>";
-        }
-    } else {
-        echo "Data berhasil dikirim: Nama = $nama, Email = $email";
-    }
-}
-?>
+        var formData = $("#myForm").serialize();
+        $.ajax({
+            url: "proses_lanjut.php", 
+            type: "POST",
+            data: formData,
+            success: function(response) {
+                $("#hasil").html(response);
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
